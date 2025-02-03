@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .terminal-blink {
@@ -13,7 +18,6 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent content shift when scrolling to sections */
+  scroll-margin-top: 4rem;
 }
-
-/* Prevent content shift when scrolling to sections */
-scroll-margin-top: 4rem;

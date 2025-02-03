@@ -6,8 +6,10 @@ import {
   Globe,
   Sparkles,
   BookOpen,
+  Download,
 } from "lucide-react";
 import Avatar from "./assets/avatar.jpg";
+import Resume from "./assets/resume.pdf";
 
 function App() {
   return (
@@ -60,13 +62,22 @@ function App() {
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                 Jakub Aniszewski
               </h1>
-              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mt-4 px-4">
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto my-4 px-4 ">
                 Software Developer specializing in TypeScript and Python with{" "}
                 <br />
                 <strong className="text-xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                   4+ years of experience
                 </strong>
               </p>
+              <a
+                href={Resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 mt-8 text-sm font-medium text-white bg-purple-600/20 border border-purple-500/20 rounded-full transition-all duration-300 hover:bg-purple-600/30 hover:border-purple-500/30 hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] group"
+              >
+                <Download className="w-4 h-4" />
+                Download my Resume!
+              </a>
             </div>
           </section>
 
