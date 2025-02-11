@@ -29,7 +29,7 @@ function App() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-zinc-800">
         <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex gap-4 md:gap-6">
+          <div className="flex items-center justify-between w-full">
             <button
               className="md:hidden text-gray-100"
               onClick={toggleSidebar}
@@ -37,7 +37,7 @@ function App() {
               {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
             <span className="text-xl font-semibold"></span>
-            <div className="hidden md:flex gap-4">
+            <div className="hidden md:flex gap-4 ml-auto">
               <a
                 href="#about"
                 className="hover:text-gray-400 transition-colors text-sm md:text-base"
