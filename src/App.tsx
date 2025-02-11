@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Github,
   Mail,
@@ -7,11 +8,19 @@ import {
   Sparkles,
   BookOpen,
   Download,
+  Menu,
+  X,
 } from "lucide-react";
 import Avatar from "./assets/avatar.jpg";
 import Resume from "./assets/resume.pdf";
 
 function App() {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-gray-100 antialiased">
       {/* Background Gradient Overlay */}
@@ -20,29 +29,64 @@ function App() {
       {/* Header */}
       <header className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-zinc-800">
         <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-xl font-semibold"></span>
           <div className="flex gap-4 md:gap-6">
-            <a
-              href="#about"
-              className="hover:text-gray-400 transition-colors text-sm md:text-base"
+            <button
+              className="md:hidden text-gray-100"
+              onClick={toggleSidebar}
             >
-              About
-            </a>
-            <a
-              href="#work"
-              className="hover:text-gray-400 transition-colors text-sm md:text-base"
-            >
-              Work
-            </a>
-            <a
-              href="#contact"
-              className="hover:text-gray-400 transition-colors text-sm md:text-base"
-            >
-              Contact
-            </a>
+              {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            <span className="text-xl font-semibold"></span>
+            <div className="hidden md:flex gap-4">
+              <a
+                href="#about"
+                className="hover:text-gray-400 transition-colors text-sm md:text-base"
+              >
+                About
+              </a>
+              <a
+                href="#work"
+                className="hover:text-gray-400 transition-colors text-sm md:text-base"
+              >
+                Work
+              </a>
+              <a
+                href="#contact"
+                className="hover:text-gray-400 transition-colors text-sm md:text-base"
+              >
+                Contact
+              </a>
+            </div>
           </div>
         </nav>
       </header>
+
+      {/* Sidebar for Mobile */}
+      {isSidebarOpen && (
+        <div className="fixed inset-0 bg-black/80 z-40 flex flex-col items-center justify-center space-y-6 md:hidden">
+          <a
+            href="#about"
+            className="text-gray-100 text-xl font-semibold"
+            onClick={toggleSidebar}
+          >
+            About
+          </a>
+          <a
+            href="#work"
+            className="text-gray-100 text-xl font-semibold"
+            onClick={toggleSidebar}
+          >
+            Work
+          </a>
+          <a
+            href="#contact"
+            className="text-gray-100 text-xl font-semibold"
+            onClick={toggleSidebar}
+          >
+            Contact
+          </a>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="pt-24 pb-16 px-4 md:px-6 relative">
