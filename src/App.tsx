@@ -21,12 +21,9 @@ const MatrixTerminal = () => {
   const messages = [
     "echo 'Initializing system...'",
     "sudo apt update",
-    "Loading modules...",
-    "ssh user@portfolio.dev",
     "git clone https://github.com/jaqb8/awesome-projects",
-    "cd awesome-projects && npm install",
-    "npm run dev",
-    "Starting development server...",
+    "cd awesome-projects && npm install && npm run dev",
+    "Ready to create something amazing! 🚀",
   ];
 
   // Auto-scroll effect
