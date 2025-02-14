@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Github,
   Mail,
@@ -13,6 +13,89 @@ import {
 } from "lucide-react";
 import Avatar from "./assets/avatar.jpg";
 import Resume from "./assets/resume.pdf";
+
+const MatrixTerminal = () => {
+  const [lines, setLines] = useState<string[]>([]);
+  const [currentLine, setCurrentLine] = useState("");
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const messages = [
+    "echo 'Initializing system...'",
+    "sudo apt update",
+    "Loading modules...",
+    "ssh user@portfolio.dev",
+    "git clone https://github.com/jaqb8/awesome-projects",
+    "cd awesome-projects && npm install",
+    "npm run dev",
+    "Starting development server...",
+  ];
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [lines, currentLine]);
+
+  useEffect(() => {
+    let currentChar = 0;
+    let currentMessage = 0;
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const type = () => {
+      const current = messages[currentMessage];
+
+      if (currentChar === current.length) {
+        setLines((prev) => [
+          ...prev,
+          `[${new Date().toLocaleTimeString()}] $ ${current}`,
+        ]);
+        setCurrentLine("");
+        currentChar = 0;
+        currentMessage = (currentMessage + 1) % messages.length;
+        timeout = setTimeout(type, 1000);
+      } else {
+        setCurrentLine(current.substring(0, currentChar + 1));
+        currentChar++;
+        timeout = setTimeout(type, 50);
+      }
+    };
+
+    type();
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <div className="h-full flex flex-col">
+      <div className="flex items-center gap-2 mb-2 text-gray-400">
+        <div className="flex gap-1.5">
+          <div className="w-3 h-3 rounded-full bg-red-500 opacity-75"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-75"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500 opacity-75"></div>
+        </div>
+        <span className="text-sm">terminal</span>
+      </div>
+      <div className="flex-1 bg-black/50 rounded-lg p-4 font-mono text-sm relative overflow-hidden">
+        <div
+          ref={terminalRef}
+          className="h-full terminal-text relative space-y-1 overflow-y-auto scrollbar-hide"
+        >
+          {lines.map((line, i) => (
+            <div key={i} className="text-gray-300">
+              {line}
+            </div>
+          ))}
+          <div className="text-gray-300">
+            <span className="text-green-400">
+              [{new Date().toLocaleTimeString()}] $
+            </span>{" "}
+            <span className="text-purple-400">{currentLine}</span>
+            <span className="animate-pulse">_</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -30,11 +113,12 @@ function App() {
       <header className="fixed top-0 w-full bg-black/80 backdrop-blur-md z-50 border-b border-zinc-800">
         <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center justify-between w-full">
-            <button
-              className="md:hidden text-gray-100"
-              onClick={toggleSidebar}
-            >
-              {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <button className="md:hidden text-gray-100" onClick={toggleSidebar}>
+              {isSidebarOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
             <span className="text-xl font-semibold"></span>
             <div className="hidden md:flex gap-4 ml-auto">
@@ -94,7 +178,7 @@ function App() {
           {/* Hero Section */}
           <section className="text-center space-y-8">
             <div className="relative inline-block">
-              <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-purple-400/10 mx-auto mb-6">
+              <div className="w-64 h-64 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-purple-400/10 mx-auto mb-6">
                 <img
                   src={Avatar}
                   alt="Jakub Aniszewski"
@@ -159,7 +243,7 @@ function App() {
                     <rect fill="#fff" rx="50" />
                     <rect fill="#9ca3af" height="512" rx="50" width="512" />
                     <path
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                       d="m316.939 407.424v50.061c8.138 4.172 17.763 7.3 28.875 9.386s22.823 3.129 35.135 3.129c11.999 0 23.397-1.147 34.196-3.442 10.799-2.294 20.268-6.075 28.406-11.342 8.138-5.266 14.581-12.15 19.328-20.65s7.121-19.007 7.121-31.522c0-9.074-1.356-17.026-4.069-23.857s-6.625-12.906-11.738-18.225c-5.112-5.319-11.242-10.091-18.389-14.315s-15.207-8.213-24.18-11.967c-6.573-2.712-12.468-5.345-17.685-7.9-5.217-2.556-9.651-5.163-13.303-7.822-3.652-2.66-6.469-5.476-8.451-8.448-1.982-2.973-2.974-6.336-2.974-10.091 0-3.441.887-6.544 2.661-9.308s4.278-5.136 7.512-7.118c3.235-1.981 7.199-3.52 11.894-4.615 4.696-1.095 9.912-1.642 15.651-1.642 4.173 0 8.581.313 13.224.938 4.643.626 9.312 1.591 14.008 2.894 4.695 1.304 9.259 2.947 13.694 4.928 4.434 1.982 8.529 4.276 12.285 6.884v-46.776c-7.616-2.92-15.937-5.084-24.962-6.492s-19.381-2.112-31.066-2.112c-11.895 0-23.163 1.278-33.805 3.833s-20.006 6.544-28.093 11.967c-8.086 5.424-14.476 12.333-19.171 20.729-4.695 8.395-7.043 18.433-7.043 30.114 0 14.914 4.304 27.638 12.912 38.172 8.607 10.533 21.675 19.45 39.204 26.751 6.886 2.816 13.303 5.579 19.25 8.291s11.086 5.528 15.415 8.448c4.33 2.92 7.747 6.101 10.252 9.543 2.504 3.441 3.756 7.352 3.756 11.733 0 3.233-.783 6.231-2.348 8.995s-3.939 5.162-7.121 7.196-7.147 3.624-11.894 4.771c-4.748 1.148-10.303 1.721-16.668 1.721-10.851 0-21.597-1.903-32.24-5.71-10.642-3.806-20.502-9.516-29.579-17.13zm-84.159-123.342h64.22v-41.082h-179v41.082h63.906v182.918h50.874z"
                       fill="#000"
                     />
@@ -233,6 +317,11 @@ function App() {
                   <p className="text-sm text-gray-400">Jan 2020 - Oct 2022</p>
                 </div>
               </div>
+            </div>
+
+            {/* Terminal Card */}
+            <div className="bg-zinc-900/40 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow border border-zinc-800/50 h-[400px]">
+              <MatrixTerminal />
             </div>
 
             {/* Contact */}
