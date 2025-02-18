@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Avatar from "./assets/avatar.jpg";
 import Resume from "./assets/resume.pdf";
+import GitHubCalendar from "react-github-calendar";
 
 const MatrixTerminal = () => {
   const [lines, setLines] = useState<string[]>([]);
@@ -317,8 +318,43 @@ function App() {
             </div>
 
             {/* Terminal Card */}
-            <div className="bg-zinc-900/40 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow border border-zinc-800/50 h-[400px]">
+            {/* <div className="bg-zinc-900/40 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow border border-zinc-800/50 h-[400px]">
               <MatrixTerminal />
+            </div> */}
+
+            {/* GitHub Activity Card */}
+            <div className="bg-zinc-900/40 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow border border-zinc-800/50">
+              <Github className="w-8 h-8 mb-4 text-gray-400" />
+              <h2 className="text-2xl font-semibold mb-4">GitHub Activity</h2>
+              <div className="overflow-x-auto flex justify-center items-center">
+                <GitHubCalendar
+                  username="jaqb8"
+                  colorScheme="dark"
+                  transformData={(contributions) => {
+                    const currentDate = new Date();
+                    const lastFourMonths = new Date(
+                      currentDate.setMonth(currentDate.getMonth() - 4)
+                    );
+
+                    return contributions.filter((activity) => {
+                      const date = new Date(activity.date);
+                      return date >= lastFourMonths;
+                    });
+                  }}
+                  labels={{
+                    totalCount: "{{count}} contributions in the last 4 months",
+                  }}
+                  theme={{
+                    dark: [
+                      "#161b22",
+                      "#0e4429",
+                      "#006d32",
+                      "#26a641",
+                      "#39d353",
+                    ],
+                  }}
+                />
+              </div>
             </div>
 
             {/* Contact */}
