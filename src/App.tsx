@@ -284,14 +284,30 @@ function App() {
             >
               <Sparkles className="w-8 h-8 mb-4" />
               <h2 className="text-2xl font-semibold mb-4">Featured Project</h2>
-              <p className="mb-4">Plantigo - IoT system for plant monitoring</p>
-              <a
-                href="https://plantigo.online"
-                className="text-sm underline"
-                target="_blank"
-              >
-                Visit now →
-              </a>
+              <div className="space-y-8">
+                <div>
+                  <p className="mb-2">
+                    Plantigo - IoT system for plant monitoring
+                  </p>
+                  <a
+                    href="https://plantigo.online"
+                    className="text-sm underline"
+                    target="_blank"
+                  >
+                    Visit now →
+                  </a>
+                </div>
+                <div>
+                  <p className="mb-2">Michał Kapusz - tennis coach website</p>
+                  <a
+                    href="https://michalkapusz.netlify.app"
+                    className="text-sm underline"
+                    target="_blank"
+                  >
+                    Visit now →
+                  </a>
+                </div>
+              </div>
             </div>
 
             {/* Experience */}
