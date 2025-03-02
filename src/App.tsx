@@ -300,7 +300,7 @@ function App() {
                 <div>
                   <p className="mb-2">Michał Kapusz - tennis coach website</p>
                   <a
-                    href="https://michalkapusz.netlify.app"
+                    href="https://kapusz-tenis.pl"
                     className="text-sm underline"
                     target="_blank"
                   >
