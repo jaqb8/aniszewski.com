@@ -316,9 +316,14 @@ function App() {
               <h2 className="text-2xl font-semibold mb-4">Experience</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-bold">Fullstack Developer</h3>
+                  <h3 className="font-bold">Senior Python Developer</h3>
+                  <p className="">STX Next</p>
+                  <p className="text-sm text-gray-400">Jun 2025 - Present</p>
+                </div>
+                <div>
+                  <h3 className="font-bold">Full-Stack Software Engineer</h3>
                   <p className="">NotBug</p>
-                  <p className="text-sm text-gray-400">Jan 2024 - Present</p>
+                  <p className="text-sm text-gray-400">Jan 2024 - Apr 2025</p>
                 </div>
                 <div>
                   <h3 className="font-bold">Python Software Engineer</h3>
