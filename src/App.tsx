@@ -192,7 +192,7 @@ function App() {
                 Software Developer specializing in TypeScript and Python with{" "}
                 <br />
                 <strong className="text-xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                  4+ years of experience
+                  5+ years of experience
                 </strong>
               </p>
               <a
