@@ -24,6 +24,10 @@ This repository contains the source code for **aniszewski.com**, a personal port
    ```bash
    npm run lint
    ```
+4. Run the unit tests with [Vitest](https://vitest.dev/):
+   ```bash
+   npm test
+   ```
 
 ## Building for Production
 
