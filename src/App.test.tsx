@@ -1,6 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+
+// Mock GitHubCalendar to avoid network requests during tests
+vi.mock('react-github-calendar', () => ({
+  __esModule: true,
+  default: () => <div data-testid="github-calendar" />,
+}));
 
 // Tests for main App component
 
