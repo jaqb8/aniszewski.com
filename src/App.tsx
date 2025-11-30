@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   Github,
   Mail,
@@ -14,86 +14,6 @@ import {
 import Avatar from "./assets/avatar.jpg";
 import Resume from "./assets/resume.pdf";
 import GitHubCalendar from "react-github-calendar";
-
-const MatrixTerminal = () => {
-  const [lines, setLines] = useState<string[]>([]);
-  const [currentLine, setCurrentLine] = useState("");
-  const terminalRef = useRef<HTMLDivElement>(null);
-  const messages = [
-    "echo 'Initializing system...'",
-    "sudo apt update",
-    "git clone https://github.com/jaqb8/awesome-projects",
-    "cd awesome-projects && npm install && npm run dev",
-    "Ready to create something amazing! 🚀",
-  ];
-
-  // Auto-scroll effect
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
-  }, [lines, currentLine]);
-
-  useEffect(() => {
-    let currentChar = 0;
-    let currentMessage = 0;
-    let timeout: ReturnType<typeof setTimeout>;
-
-    const type = () => {
-      const current = messages[currentMessage];
-
-      if (currentChar === current.length) {
-        setLines((prev) => [
-          ...prev,
-          `[${new Date().toLocaleTimeString()}] $ ${current}`,
-        ]);
-        setCurrentLine("");
-        currentChar = 0;
-        currentMessage = (currentMessage + 1) % messages.length;
-        timeout = setTimeout(type, 1000);
-      } else {
-        setCurrentLine(current.substring(0, currentChar + 1));
-        currentChar++;
-        timeout = setTimeout(type, 50);
-      }
-    };
-
-    type();
-    return () => clearTimeout(timeout);
-  }, []);
-
-  return (
-    <div className="h-full flex flex-col">
-      <div className="flex items-center gap-2 mb-2 text-gray-400">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500 opacity-75"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-75"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500 opacity-75"></div>
-        </div>
-        <span className="text-sm">terminal</span>
-      </div>
-      <div className="flex-1 bg-black/50 rounded-lg p-4 font-mono text-sm relative overflow-hidden">
-        <div
-          ref={terminalRef}
-          className="h-full terminal-text relative space-y-1 overflow-y-auto scrollbar-hide"
-        >
-          {lines.map((line, i) => (
-            <div key={i} className="text-gray-300">
-              {line}
-            </div>
-          ))}
-          <div className="text-gray-300">
-            <span className="text-green-400">
-              [{new Date().toLocaleTimeString()}] $
-            </span>{" "}
-            <span className="text-purple-400">{currentLine}</span>
-            <span className="animate-pulse">_</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -285,6 +205,20 @@ function App() {
               <Sparkles className="w-8 h-8 mb-4" />
               <h2 className="text-2xl font-semibold mb-4">Featured Project</h2>
               <div className="space-y-8">
+                <div>
+                  <p className="mb-2">
+                    Language Learning Buddy - AI assistant for identifying
+                    English grammar mistakes and building personalized learning
+                    lists
+                  </p>
+                  <a
+                    href="https://language-learning-buddy.pl"
+                    className="text-sm underline"
+                    target="_blank"
+                  >
+                    Visit now →
+                  </a>
+                </div>
                 <div>
                   <p className="mb-2">
                     Plantigo - IoT system for plant monitoring
