@@ -220,18 +220,6 @@ function App() {
                   </a>
                 </div>
                 <div>
-                  <p className="mb-2">
-                    Plantigo - IoT system for plant monitoring
-                  </p>
-                  <a
-                    href="https://plantigo.online"
-                    className="text-sm underline"
-                    target="_blank"
-                  >
-                    Visit now →
-                  </a>
-                </div>
-                <div>
                   <p className="mb-2">Michał Kapusz - tennis coach website</p>
                   <a
                     href="https://kapusz-tenis.pl"
