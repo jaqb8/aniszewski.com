@@ -345,7 +345,7 @@ function App() {
       {/* Footer */}
       <footer className="border-t border-zinc-800">
         <div className="max-w-6xl mx-auto px-6 py-8 text-center text-gray-400">
-          <p>© 2025 Jakub Aniszewski IT Solutions. All rights reserved.</p>
+          <p>© 2026 Jakub Aniszewski IT Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>
