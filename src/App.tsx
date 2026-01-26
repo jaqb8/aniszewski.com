@@ -108,22 +108,42 @@ function App() {
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                 Jakub Aniszewski
               </h1>
-              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto my-4 px-4 ">
-                Software Developer specializing in TypeScript and Python with{" "}
-                <br />
-                <strong className="text-xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                  5+ years of experience
-                </strong>
+              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto my-4 px-4">
+                I build production-ready web apps that feel fast, stay reliable,
+                and make teams proud to ship.
               </p>
-              <a
-                href={Resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 mt-8 text-sm font-medium text-white bg-purple-600/20 border border-purple-500/20 rounded-full transition-all duration-300 hover:bg-purple-600/30 hover:border-purple-500/30 hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] group"
-              >
-                <Download className="w-4 h-4" />
-                Download my Resume!
-              </a>
+              <p className="text-2xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent font-semibold pb-4">
+                5+ years in TypeScript &amp; Python
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 text-sm text-gray-300">
+                <span className="px-3 py-1 rounded-full border border-zinc-800/60 bg-zinc-900/40">
+                  Builder mindset
+                </span>
+                <span className="px-3 py-1 rounded-full border border-zinc-800/60 bg-zinc-900/40">
+                  Strong ownership
+                </span>
+                <span className="px-3 py-1 rounded-full border border-zinc-800/60 bg-zinc-900/40">
+                  Product-first thinking
+                </span>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
+                <a
+                  href={Resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-purple-600/20 border border-purple-500/20 rounded-full transition-all duration-300 hover:bg-purple-600/30 hover:border-purple-500/30 hover:scale-105 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] group"
+                >
+                  <Download className="w-4 h-4" />
+                  Download my Resume
+                </a>
+                <a
+                  href="mailto:jakubaniszewski@pm.me?subject=Let's%20work%20together"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white bg-white/5 border border-zinc-700 rounded-full transition-all duration-300 hover:bg-white/10 hover:border-zinc-600 hover:scale-105"
+                >
+                  <Mail className="w-4 h-4" />
+                  Let's talk
+                </a>
+              </div>
             </div>
           </section>
 
@@ -137,11 +157,27 @@ function App() {
               <Terminal className="w-8 h-8 mb-4 text-gray-400 terminal-blink" />
               <h2 className="text-2xl font-semibold mb-4">About Me</h2>
               <p className="text-gray-400 leading-relaxed">
-                I'm a passionate software developer focused on building elegant,
-                efficient, and user-friendly applications. With expertise in
-                TypeScript and Python, I create robust solutions that make a
-                difference.
+                I'm a developer who cares deeply about clarity, craft, and
+                outcomes. I love turning complex ideas into simple, dependable
+                products and collaborating closely with people who value trust
+                and long-term quality.
               </p>
+              <div className="mt-6 grid gap-3 text-sm text-gray-300">
+                <div className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-purple-400/80"></span>
+                  <p>I keep communication crisp and progress visible.</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-purple-400/80"></span>
+                  <p>
+                    I build with empathy for the next developer on the team.
+                  </p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-purple-400/80"></span>
+                  <p>I prefer steady delivery over noisy perfection.</p>
+                </div>
+              </div>
             </div>
 
             {/* Skills Card */}
@@ -166,7 +202,7 @@ function App() {
                       fill="#000"
                     />
                   </svg>
-                  TypeScript
+                  TypeScript - stable front-ends without regressions
                 </li>
                 <li className="flex items-center gap-2">
                   <svg
@@ -179,7 +215,7 @@ function App() {
                       fill="#9ca3af"
                     />
                   </svg>
-                  Python
+                  Python - fast, reliable APIs and automation
                 </li>
                 <li className="flex items-center gap-2">
                   <svg
@@ -192,7 +228,7 @@ function App() {
                       fill="#9ca3af"
                     />
                   </svg>
-                  React
+                  React - smooth user journeys and maintainable UI
                 </li>
               </ul>
             </div>
@@ -220,7 +256,10 @@ function App() {
                   </a>
                 </div>
                 <div>
-                  <p className="mb-2">Michał Kapusz - tennis coach website</p>
+                  <p className="mb-2">
+                    Michał Kapusz - Clean, focused site to attract new tennis
+                    students and highlight coaching style.
+                  </p>
                   <a
                     href="https://kapusz-tenis.pl"
                     className="text-sm underline"
@@ -276,7 +315,7 @@ function App() {
                   transformData={(contributions) => {
                     const currentDate = new Date();
                     const lastFourMonths = new Date(
-                      currentDate.setMonth(currentDate.getMonth() - 4)
+                      currentDate.setMonth(currentDate.getMonth() - 4),
                     );
 
                     return contributions.filter((activity) => {
@@ -308,8 +347,8 @@ function App() {
               <div className="max-w-2xl mx-auto text-center space-y-4">
                 <h2 className="text-2xl font-semibold">Let's Connect</h2>
                 <p className="text-gray-400">
-                  I'm always interested in hearing about new projects and
-                  opportunities.
+                  If you care about quality, clarity, and calm execution, we’ll
+                  get along great. I reply within 24 hours.
                 </p>
                 <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
                   <a
