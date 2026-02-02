@@ -17,6 +17,8 @@ import GitHubCalendar from "react-github-calendar";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const currentYear = new Date().getFullYear();
+  const experienceYears = Math.max(0, currentYear - 2020);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -113,7 +115,7 @@ function App() {
                 and make teams proud to ship.
               </p>
               <p className="text-2xl bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent font-semibold pb-4">
-                5+ years in TypeScript &amp; Python
+                {experienceYears}+ years in TypeScript &amp; Python
               </p>
               <div className="flex flex-wrap justify-center gap-2 text-sm text-gray-300">
                 <span className="px-3 py-1 rounded-full border border-zinc-800/60 bg-zinc-900/40">
@@ -257,8 +259,8 @@ function App() {
                 </div>
                 <div>
                   <p className="mb-2">
-                    Michał Kapusz - Clean, focused site to attract new tennis
-                    students and highlight coaching style.
+                    Michał Kapusz - Tennis coach website designed to attract
+                    new students and highlight coaching style.
                   </p>
                   <a
                     href="https://kapusz-tenis.pl"
@@ -384,7 +386,9 @@ function App() {
       {/* Footer */}
       <footer className="border-t border-zinc-800">
         <div className="max-w-6xl mx-auto px-6 py-8 text-center text-gray-400">
-          <p>© 2026 Jakub Aniszewski IT Solutions. All rights reserved.</p>
+          <p>
+            © {currentYear} Jakub Aniszewski IT Solutions. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
