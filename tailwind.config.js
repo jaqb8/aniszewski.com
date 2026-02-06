@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Inter Variable"', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        brand: "#c084fc",
+      },
+    },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [],
 };

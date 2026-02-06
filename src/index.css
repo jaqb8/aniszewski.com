@@ -2,6 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .card {
+    @apply bg-zinc-900/60 rounded-2xl p-6 md:p-8
+      transition-shadow
+      border border-zinc-800/40;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand;
+  }
+}
+
+/* --- Animation system --- */
+:root {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hero entrance */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s var(--ease-out-quart) both;
+  animation-delay: var(--stagger, 0ms);
+}
+
+/* Scroll-triggered card reveals */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-out-quart),
+    transform 0.5s var(--ease-out-quart);
+  transition-delay: var(--stagger, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile menu entrance */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up-sm {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-backdrop {
+  animation: fade-in 0.2s var(--ease-out-quart) both;
+}
+
+.menu-link {
+  animation: slide-up-sm 0.3s var(--ease-out-quart) both;
+  animation-delay: var(--stagger, 0ms);
+}
+
+/* --- Terminal cursor --- */
 @keyframes blink {
   0%,
   100% {
@@ -16,8 +95,45 @@
   animation: blink 1.2s step-end infinite;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 html {
-  scroll-behavior: smooth;
   /* Prevent content shift when scrolling to sections */
   scroll-margin-top: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-blink,
+  .animate-fade-up,
+  .menu-backdrop,
+  .menu-link {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: white;
+  color: black;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
 }
