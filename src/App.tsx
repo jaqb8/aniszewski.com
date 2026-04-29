@@ -7,16 +7,19 @@ import {
   Globe,
   Sparkles,
   BookOpen,
+  GraduationCap,
   Download,
   Menu,
   X,
 } from "lucide-react";
 import Avatar from "./assets/avatar.jpg";
+import CloudDeveloperCertification from "./assets/professional-cloud-developer-certification.png";
 import Resume from "./assets/resume.pdf";
 import GitHubCalendar from "react-github-calendar";
 
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [calendarMonthsBack, setCalendarMonthsBack] = useState(10);
   const currentYear = new Date().getFullYear();
   const experienceYears = Math.max(0, currentYear - 2020);
 
@@ -60,6 +63,19 @@ function App() {
   }, [isSidebarOpen]);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+    const updateCalendarMonths = (event: MediaQueryList | MediaQueryListEvent) => {
+      setCalendarMonthsBack(event.matches ? 3 : 10);
+    };
+
+    updateCalendarMonths(mediaQuery);
+    mediaQuery.addEventListener("change", updateCalendarMonths);
+
+    return () => mediaQuery.removeEventListener("change", updateCalendarMonths);
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -90,7 +106,9 @@ function App() {
             <button
               className="md:hidden text-gray-100 p-2 -ml-2 rounded-lg focus-ring"
               onClick={toggleSidebar}
-              aria-label={isSidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={
+                isSidebarOpen ? "Close navigation menu" : "Open navigation menu"
+              }
               aria-expanded={isSidebarOpen}
               aria-controls="mobile-menu"
             >
@@ -182,6 +200,24 @@ function App() {
               >
                 Jakub Aniszewski
               </h1>
+              <div
+                className="mt-4 inline-flex items-center gap-3 rounded-full border border-zinc-800/80 bg-zinc-900/50 px-3 py-2 text-left animate-fade-up"
+                style={{ "--stagger": "150ms" } as React.CSSProperties}
+              >
+                <img
+                  src={CloudDeveloperCertification}
+                  alt="Google Cloud Professional Cloud Developer certification badge"
+                  className="h-10 w-10 rounded-full bg-white object-cover"
+                />
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">
+                    Google Cloud
+                  </p>
+                  <p className="text-sm font-medium text-zinc-100">
+                    Professional Cloud Developer
+                  </p>
+                </div>
+              </div>
               <p
                 className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto my-4 px-4 animate-fade-up"
                 style={{ "--stagger": "200ms" } as React.CSSProperties}
@@ -236,10 +272,7 @@ function App() {
           {/* Bento Grid */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {/* About Card */}
-            <div
-              id="about"
-              className="card md:col-span-2 scroll-mt-20 reveal"
-            >
+            <div id="about" className="card md:col-span-2 scroll-mt-20 reveal">
               <Terminal className="w-5 h-5 mb-4 text-zinc-500 terminal-blink" />
               <h2 className="text-2xl font-semibold mb-4">About Me</h2>
               <p className="text-gray-400 leading-relaxed">
@@ -351,8 +384,8 @@ function App() {
                 </div>
                 <div>
                   <p className="mb-2">
-                    Michał Kapusz - Tennis coach website designed to attract
-                    new students and highlight coaching style.
+                    Michał Kapusz - Tennis coach website designed to attract new
+                    students and highlight coaching style.
                   </p>
                   <a
                     href="https://kapusz-tenis.pl"
@@ -394,41 +427,101 @@ function App() {
               </div>
             </div>
 
-            {/* GitHub Activity Card */}
             <div
               className="card reveal"
+              style={{ "--stagger": "150ms" } as React.CSSProperties}
+            >
+              <GraduationCap className="w-5 h-5 mb-4 text-zinc-500" />
+              <h2 className="text-2xl font-semibold mb-4">Courses &amp; Certifications</h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-bold">Professional Cloud Developer</h3>
+                  <p>Google Cloud</p>
+                  <p className="text-sm text-gray-400">Issued Apr 28, 2026</p>
+                  <a
+                    href="https://www.credly.com/badges/40f6e45b-cef3-4de4-aa94-ae26f96b7d44/public_url"
+                    className="mt-2 inline-flex text-sm underline rounded focus-ring"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Show credential →
+                  </a>
+                </div>
+                <div>
+                  <h3 className="font-bold">10xDevs 2</h3>
+                  <p>Przeprogramowani</p>
+                  <p className="text-sm text-gray-400">Issued Dec 2025</p>
+                  <a
+                    href="https://credsverse.com/credentials/cb6b9a1e-674f-4a44-b1f5-6a6dadf39f2d"
+                    className="mt-2 inline-flex text-sm underline rounded focus-ring"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Show credential →
+                  </a>
+                </div>
+                <div>
+                  <h3 className="font-bold">
+                    AI Devs 2 - Connect GPT-4 with application and automation
+                    logic
+                  </h3>
+                  <p>AI_devs</p>
+                  <p className="text-sm text-gray-400">Issued Nov 2023</p>
+                  <a
+                    href="https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036"
+                    className="mt-2 inline-flex text-sm underline rounded focus-ring"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Show credential →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* GitHub Activity Card */}
+            <div
+              className="card reveal md:col-span-3"
               style={{ "--stagger": "100ms" } as React.CSSProperties}
             >
               <Github className="w-5 h-5 mb-4 text-zinc-500" />
               <h2 className="text-2xl font-semibold mb-4">GitHub Activity</h2>
-              <div className="overflow-x-auto flex justify-center items-center">
-                <GitHubCalendar
-                  username="jaqb8"
-                  colorScheme="dark"
-                  transformData={(contributions) => {
-                    const currentDate = new Date();
-                    const lastFourMonths = new Date(
-                      currentDate.setMonth(currentDate.getMonth() - 4),
-                    );
+              <div className="w-full overflow-x-auto">
+                <div className="mx-auto w-max">
+                  <GitHubCalendar
+                    username="jaqb8"
+                    colorScheme="dark"
+                    blockSize={18}
+                    blockMargin={6}
+                    fontSize={16}
+                    hideColorLegend={calendarMonthsBack === 3}
+                    transformData={(contributions) => {
+                      const currentDate = new Date();
+                      const visibleMonths = new Date(
+                        currentDate.setMonth(
+                          currentDate.getMonth() - calendarMonthsBack,
+                        ),
+                      );
 
-                    return contributions.filter((activity) => {
-                      const date = new Date(activity.date);
-                      return date >= lastFourMonths;
-                    });
-                  }}
-                  labels={{
-                    totalCount: "{{count}} contributions in the last 4 months",
-                  }}
-                  theme={{
-                    dark: [
-                      "#161b22",
-                      "#0e4429",
-                      "#006d32",
-                      "#26a641",
-                      "#39d353",
-                    ],
-                  }}
-                />
+                      return contributions.filter((activity) => {
+                        const date = new Date(activity.date);
+                        return date >= visibleMonths;
+                      });
+                    }}
+                    labels={{
+                      totalCount: `{{count}} contributions in the last ${calendarMonthsBack} months`,
+                    }}
+                    theme={{
+                      dark: [
+                        "#161b22",
+                        "#0e4429",
+                        "#006d32",
+                        "#26a641",
+                        "#39d353",
+                      ],
+                    }}
+                  />
+                </div>
               </div>
             </div>
 
