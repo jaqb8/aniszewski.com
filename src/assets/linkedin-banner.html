@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jakub Aniszewski LinkedIn Banner</title>
+    <style>
+      :root {
+        --bg: #101116;
+        --panel: #151720;
+        --line: rgba(255, 255, 255, 0.2);
+        --text: #fbfbfd;
+        --muted: #d3d8e2;
+        --accent: #ffc55c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg);
+        font-family: "Inter", "Segoe UI", sans-serif;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+      }
+
+      .banner {
+        position: relative;
+        width: 3168px;
+        height: 792px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 78% 16%, rgba(255, 197, 92, 0.15), transparent 26%),
+          radial-gradient(circle at 58% 50%, rgba(255, 255, 255, 0.05), transparent 42%),
+          linear-gradient(180deg, #181a24 0%, #0f1016 100%);
+        color: var(--text);
+      }
+
+      .banner::before {
+        content: "";
+        position: absolute;
+        inset: 40px;
+        border: 1px solid var(--line);
+        border-radius: 56px;
+        pointer-events: none;
+      }
+
+      .ring {
+        position: absolute;
+        border: 1px solid rgba(255, 197, 92, 0.3);
+        border-radius: 999px;
+      }
+
+      .ring.one {
+        top: -384px;
+        right: -176px;
+        width: 712px;
+        height: 712px;
+      }
+
+      .ring.two {
+        top: -224px;
+        right: 496px;
+        width: 464px;
+        height: 464px;
+      }
+
+      .content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 112px 440px 112px 1040px;
+      }
+
+      .copy {
+        flex: 1;
+        text-align: right;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 180px;
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+        font-weight: 800;
+        color: #ffffff;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+      }
+
+      .role {
+        margin-top: 36px;
+        color: var(--muted);
+        font-size: 68px;
+        letter-spacing: -0.035em;
+        font-weight: 700;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .badge-frame {
+        position: absolute;
+        right: 112px;
+        bottom: 112px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 176px;
+        height: 176px;
+      }
+
+      .badge {
+        width: 176px;
+        height: 176px;
+        object-fit: contain;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="banner">
+      <div class="ring one"></div>
+      <div class="ring two"></div>
+
+      <section class="content">
+        <div class="copy">
+          <h1>aniszewski.com</h1>
+          <div class="role">Software Engineer</div>
+        </div>
+
+        <div class="badge-frame">
+          <img
+            class="badge"
+            src="./professional-cloud-developer-certification.png"
+            alt="Google Cloud Professional Cloud Developer badge"
+          />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

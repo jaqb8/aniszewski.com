@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jakub Aniszewski - Resume</title>
+    <style>
+      @font-face {
+        font-family: "Inter Variable";
+        font-style: normal;
+        font-display: swap;
+        font-weight: 100 900;
+        src: url("../../node_modules/@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2") format("woff2");
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      :root {
+        --paper: #09090b;
+        --panel: rgba(24, 24, 27, 0.64);
+        --panel-strong: rgba(24, 24, 27, 0.88);
+        --line: rgba(63, 63, 70, 0.72);
+        --line-soft: rgba(63, 63, 70, 0.46);
+        --text: #f4f4f5;
+        --muted: #a1a1aa;
+        --soft: #71717a;
+        --accent: #f4f4f5;
+        --accent-ink: #e4e4e7;
+        --page-shadow: 0 10mm 24mm rgba(9, 9, 11, 0.24);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #e4e4e7;
+        color: var(--text);
+        font-family: "Inter Variable", Inter, "Segoe UI", Arial, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        display: grid;
+        justify-content: center;
+        gap: 12mm;
+        padding: 12mm;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(24, 24, 27, 0.36), transparent 46mm),
+          var(--paper);
+        box-shadow: var(--page-shadow);
+      }
+
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      .page::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1.6mm;
+        background: linear-gradient(90deg, rgba(244, 244, 245, 0.92), rgba(244, 244, 245, 0));
+      }
+
+      .inner {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.88fr);
+        gap: 7mm;
+        height: 100%;
+        padding: 13mm;
+      }
+
+      .inner.with-footer {
+        padding-bottom: 34mm;
+      }
+
+      .left,
+      .right {
+        display: grid;
+        align-content: start;
+        min-width: 0;
+      }
+
+      .left {
+        gap: 6mm;
+      }
+
+      .right {
+        gap: 5mm;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 62mm;
+        padding: 5mm 41mm 5mm 5mm;
+        border: 0.3mm solid var(--line);
+        border-radius: 5mm;
+        background: var(--panel-strong);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 80mm;
+        color: #ffffff;
+        font-size: 11.5mm;
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .role {
+        margin-top: 2.8mm;
+        color: #e4e4e7;
+        font-size: 4.6mm;
+        font-weight: 650;
+        letter-spacing: 0;
+      }
+
+      .summary {
+        margin-top: 3.6mm;
+        max-width: 92mm;
+        color: #d4d4d8;
+        font-size: 3.5mm;
+        line-height: 1.48;
+      }
+
+      .avatar-wrap {
+        position: absolute;
+        top: 7mm;
+        right: 7mm;
+      }
+
+      .avatar {
+        width: 30mm;
+        height: 30mm;
+        border: 0.35mm solid var(--line);
+        border-radius: 999px;
+        object-fit: cover;
+      }
+
+      .badge {
+        position: absolute;
+        right: 4mm;
+        bottom: 4mm;
+        width: 12mm;
+        height: 12mm;
+        border: 0.3mm solid var(--line-soft);
+        border-radius: 999px;
+        background: #ffffff;
+        object-fit: contain;
+      }
+
+      .section {
+        display: grid;
+        gap: 2.8mm;
+        min-width: 0;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 2.6mm;
+        color: #ffffff;
+        font-size: 4.2mm;
+        font-weight: 750;
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      .section-title::before {
+        content: "";
+        width: 6.4mm;
+        height: 0.55mm;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #f4f4f5, rgba(244, 244, 245, 0.18));
+      }
+
+      .card {
+        padding: 4mm;
+        border: 0.3mm solid var(--line-soft);
+        border-radius: 4.3mm;
+        background: var(--panel);
+      }
+
+      .timeline,
+      .meta-list,
+      .contact-list,
+      .skill-list {
+        display: grid;
+      }
+
+      .timeline {
+        gap: 3.3mm;
+      }
+
+      .timeline-item,
+      .edu-item,
+      .cert-item,
+      .meta-item,
+      .contact-item {
+        min-width: 0;
+      }
+
+      .timeline-item,
+      .edu-item,
+      .cert-item {
+        display: grid;
+        gap: 1.15mm;
+        padding-bottom: 3.1mm;
+        border-bottom: 0.3mm solid rgba(63, 63, 70, 0.42);
+      }
+
+      .timeline-item:last-child,
+      .edu-item:last-child,
+      .cert-item:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .item-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 3mm;
+        align-items: start;
+      }
+
+      .item-title,
+      .edu-title,
+      .cert-title {
+        color: #ffffff;
+        font-weight: 740;
+        line-height: 1.18;
+      }
+
+      .item-title {
+        font-size: 3.78mm;
+      }
+
+      .item-company,
+      .edu-meta,
+      .cert-meta,
+      .cert-link,
+      .item-date {
+        color: var(--muted);
+        font-size: 2.95mm;
+        line-height: 1.35;
+      }
+
+      .item-date {
+        color: var(--accent-ink);
+        font-weight: 650;
+        white-space: nowrap;
+      }
+
+      .item-copy {
+        color: #d4d4d8;
+        font-size: 3.08mm;
+        line-height: 1.48;
+      }
+
+      .list {
+        display: grid;
+        gap: 1.8mm;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        position: relative;
+        padding-left: 4mm;
+        color: #d4d4d8;
+        font-size: 3.08mm;
+        line-height: 1.45;
+      }
+
+      .list li::before {
+        content: "";
+        position: absolute;
+        top: 1.65mm;
+        left: 0;
+        width: 1.35mm;
+        height: 1.35mm;
+        border-radius: 999px;
+        background: #f4f4f5;
+      }
+
+      .list li strong {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .contact-list,
+      .meta-list,
+      .skill-list {
+        gap: 2.35mm;
+      }
+
+      .contact-item,
+      .meta-item {
+        color: #e4e4e7;
+        font-size: 3.05mm;
+        line-height: 1.42;
+        word-break: break-word;
+      }
+
+      .label {
+        display: block;
+        margin-bottom: 0.7mm;
+        color: var(--soft);
+        font-size: 2.35mm;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .pill-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.7mm;
+        margin-top: 3.2mm;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 5.8mm;
+        padding: 1.15mm 2.2mm;
+        border: 0.3mm solid var(--line-soft);
+        border-radius: 999px;
+        background: rgba(39, 39, 42, 0.72);
+        color: #d4d4d8;
+        font-size: 2.65mm;
+        line-height: 1.1;
+      }
+
+      .edu-title,
+      .cert-title {
+        font-size: 3.3mm;
+      }
+
+      .cert-link a {
+        color: #ffffff;
+        border-bottom: 0.25mm solid rgba(255, 255, 255, 0.34);
+      }
+
+      .gcp-badge {
+        display: grid;
+        grid-template-columns: 11mm minmax(0, 1fr);
+        gap: 2.3mm;
+        align-items: center;
+        margin-top: 0.8mm;
+      }
+
+      .gcp-badge img {
+        width: 11mm;
+        height: 11mm;
+        border-radius: 999px;
+        background: #ffffff;
+        object-fit: contain;
+      }
+
+      .gcp-badge span {
+        color: #d4d4d8;
+        font-size: 2.68mm;
+        line-height: 1.36;
+      }
+
+      .footer {
+        position: absolute;
+        right: 13mm;
+        bottom: 10mm;
+        left: 13mm;
+        color: var(--soft);
+        font-size: 2.15mm;
+        line-height: 1.38;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 900px) {
+        body {
+          padding: 6mm;
+        }
+
+        .page {
+          transform-origin: top center;
+          width: min(210mm, calc(100vw - 12mm));
+          height: auto;
+          min-height: calc((min(210mm, calc(100vw - 12mm))) * 1.4142);
+        }
+
+        .inner {
+          grid-template-columns: 1fr;
+          height: auto;
+          min-height: inherit;
+        }
+
+        .right {
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+        }
+
+        .footer {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media print {
+        body {
+          display: block;
+          padding: 0;
+          background: transparent;
+        }
+
+        .page {
+          width: 210mm;
+          height: 297mm;
+          box-shadow: none;
+          break-after: page;
+          page-break-after: always;
+        }
+
+        .page:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="inner">
+        <section class="left">
+          <header class="hero">
+            <div>
+              <h1>Jakub Aniszewski</h1>
+              <div class="role">Software Engineer</div>
+              <p class="summary">
+                Software engineer focused on Python, TypeScript, and cloud-backed
+                applications. I build production systems with clear ownership,
+                practical architecture, and a strong bias toward reliability and
+                maintainability.
+              </p>
+              <div class="pill-grid" aria-label="Key strengths">
+                <span class="pill">Python</span>
+                <span class="pill">TypeScript</span>
+                <span class="pill">Google Cloud</span>
+                <span class="pill">Product engineering</span>
+              </div>
+            </div>
+
+            <div class="avatar-wrap">
+              <img class="avatar" src="./avatar.jpg" alt="Jakub Aniszewski" />
+            </div>
+            <img
+              class="badge"
+              src="./professional-cloud-developer-certification.png"
+              alt="Google Cloud Professional Cloud Developer badge"
+            />
+          </header>
+
+          <section class="section">
+            <h2 class="section-title">Core Strengths</h2>
+            <div class="card">
+              <ul class="list">
+                <li><strong>Backend delivery:</strong> APIs, asynchronous workflows, internal platforms, and cloud-native services.</li>
+                <li><strong>Product engineering:</strong> pragmatic full-stack execution with maintainable TypeScript frontends.</li>
+                <li><strong>Team fit:</strong> strong ownership, crisp communication, and empathy for future maintainers.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="card timeline">
+              <article class="timeline-item">
+                <div class="item-head">
+                  <div>
+                    <h3 class="item-title">Senior Python Developer</h3>
+                    <div class="item-company">STX Next</div>
+                  </div>
+                  <div class="item-date">Jun 2025 - Present</div>
+                </div>
+                <p class="item-copy">
+                  Build microservices for the digital marketing industry using
+                  Python, SQLAlchemy, and Google Cloud. Work with Datastore,
+                  Pub/Sub, and Cloud SQL to support reliable production systems.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <div class="item-head">
+                  <div>
+                    <h3 class="item-title">Full-Stack Software Engineer</h3>
+                    <div class="item-company">NotBug</div>
+                  </div>
+                  <div class="item-date">Jan 2024 - Apr 2025</div>
+                </div>
+                <p class="item-copy">
+                  Built product applications with Django and Angular, worked
+                  across SQL and NoSQL stores, and shipped asynchronous workflows
+                  with Celery, Docker, and Azure DevOps.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <div class="item-head">
+                  <div>
+                    <h3 class="item-title">Python Software Engineer</h3>
+                    <div class="item-company">TietoEvry</div>
+                  </div>
+                  <div class="item-date">Nov 2022 - Sep 2024</div>
+                </div>
+                <p class="item-copy">
+                  Developed internal test infrastructure for a Bluetooth Low
+                  Energy SDK, improving the reliability and maintainability of
+                  automated validation workflows.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <div class="item-head">
+                  <div>
+                    <h3 class="item-title">Software Engineer</h3>
+                    <div class="item-company">Nokia</div>
+                  </div>
+                  <div class="item-date">Jan 2020 - Oct 2022</div>
+                </div>
+                <p class="item-copy">
+                  Led development of an internal test execution maintenance tool
+                  with Python, Django, React, TypeScript, Postgres, Celery, and
+                  Docker.
+                </p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <aside class="right">
+          <section class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="card contact-list">
+              <div class="contact-item">
+                <span class="label">Email</span>
+                <a href="mailto:jakubaniszewski@pm.me">jakubaniszewski@pm.me</a>
+              </div>
+              <div class="contact-item">
+                <span class="label">Website</span>
+                <a href="https://aniszewski.com">aniszewski.com</a>
+              </div>
+              <div class="contact-item">
+                <span class="label">GitHub</span>
+                <a href="https://github.com/jaqb8">github.com/jaqb8</a>
+              </div>
+              <div class="contact-item">
+                <span class="label">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/jakub-aniszewski/">linkedin.com/in/jakub-aniszewski</a>
+              </div>
+              <div class="contact-item">
+                <span class="label">Phone</span>
+                <span>+48 692 706 767</span>
+              </div>
+              <div class="contact-item">
+                <span class="label">Location</span>
+                <span>Wroclaw, Poland</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Core Stack</h2>
+            <div class="card">
+              <ul class="list">
+                <li><strong>Languages:</strong> Python, TypeScript, JavaScript</li>
+                <li><strong>Backend:</strong> Django, Flask, SQLAlchemy, Celery</li>
+                <li><strong>Frontend:</strong> React, React Query, Angular</li>
+                <li><strong>Data:</strong> Postgres, SQL, NoSQL</li>
+                <li><strong>Cloud & DevOps:</strong> Google Cloud, Docker, Azure DevOps</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Snapshot</h2>
+            <div class="card meta-list">
+              <div class="meta-item">
+                <span class="label">Current focus</span>
+                <span>Python backend development, cloud architecture, and dependable delivery for production systems.</span>
+              </div>
+              <div class="meta-item">
+                <span class="label">Working style</span>
+                <span>Product-minded, structured, collaborative, and focused on clarity over unnecessary complexity.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Certification</h2>
+            <div class="card meta-list">
+              <div class="cert-item">
+                <h3 class="cert-title">Professional Cloud Developer</h3>
+                <div class="cert-meta">Google Cloud</div>
+                <div class="cert-meta">Issued Apr 28, 2026</div>
+                <div class="gcp-badge">
+                  <img
+                    src="./professional-cloud-developer-certification.png"
+                    alt="Google Cloud Professional Cloud Developer badge"
+                  />
+                  <span>Professional certification for production-ready application development on Google Cloud.</span>
+                </div>
+                <div class="cert-link">
+                  <a href="https://www.credly.com/badges/40f6e45b-cef3-4de4-aa94-ae26f96b7d44/public_url">Show credential</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <main class="page">
+      <div class="inner with-footer">
+        <section class="left">
+          <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="card meta-list">
+              <div class="edu-item">
+                <h3 class="edu-title">Master's Degree in Computer Science</h3>
+                <div class="edu-meta">Wroclaw University of Technology</div>
+                <div class="edu-meta">2021 - 2023</div>
+              </div>
+              <div class="edu-item">
+                <h3 class="edu-title">Bachelor's Degree in Computer Science</h3>
+                <div class="edu-meta">Wroclaw University of Technology</div>
+                <div class="edu-meta">2017 - 2021</div>
+              </div>
+              <div class="edu-item">
+                <h3 class="edu-title">IT Technician</h3>
+                <div class="edu-meta">Opole Electrical Schools Complex</div>
+                <div class="edu-meta">2013 - 2017</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Learning & Courses</h2>
+            <div class="card meta-list">
+              <div class="cert-item">
+                <h3 class="cert-title">10xDevs 2</h3>
+                <div class="cert-meta">Przeprogramowani</div>
+                <div class="cert-meta">Issued Dec 2025</div>
+                <div class="cert-link">
+                  <a href="https://credsverse.com/credentials/cb6b9a1e-674f-4a44-b1f5-6a6dadf39f2d">Show credential</a>
+                </div>
+              </div>
+
+              <div class="cert-item">
+                <h3 class="cert-title">AI Devs 2</h3>
+                <div class="cert-meta">AI_devs</div>
+                <div class="cert-meta">Issued Nov 2023</div>
+                <div class="cert-link">
+                  <a href="https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036">Show credential</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="card meta-list">
+              <div class="meta-item">
+                <span class="label">Language Learning Buddy</span>
+                <span>AI-assisted English learning app focused on grammar feedback and personalized practice.</span>
+                <div class="cert-link">
+                  <a href="https://language-learning-buddy.pl">language-learning-buddy.pl</a>
+                </div>
+              </div>
+              <div class="meta-item">
+                <span class="label">Kapusz Tenis</span>
+                <span>Commercial website for a tennis coach, designed around trust, conversion, and clear service presentation.</span>
+                <div class="cert-link">
+                  <a href="https://kapusz-tenis.pl">kapusz-tenis.pl</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <aside class="right">
+          <section class="section">
+            <h2 class="section-title">Additional Notes</h2>
+            <div class="card meta-list">
+              <div class="meta-item">
+                <span class="label">Languages</span>
+                <span>Polish: native<br />English: professional working proficiency</span>
+              </div>
+              <div class="meta-item">
+                <span class="label">Interests</span>
+                <span>Side projects, web product development, practical AI tooling, and cloud architecture.</span>
+              </div>
+            </div>
+          </section>
+
+        </aside>
+
+        <div class="footer">
+          I agree to the processing of personal data provided in this document for realising the recruitment process
+          pursuant to the Personal Data Protection Act of 10 May 2018 (Journal of Laws 2018, item 1000) and in agreement
+          with Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection
+          of natural persons with regard to the processing of personal data and on the free movement of such data,
+          and repealing Directive 95/46/EC (General Data Protection Regulation).
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
