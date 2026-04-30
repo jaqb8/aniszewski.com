@@ -20,6 +20,7 @@ import GitHubCalendar from "react-github-calendar";
 function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [calendarMonthsBack, setCalendarMonthsBack] = useState(10);
+  const [calendarBlockSize, setCalendarBlockSize] = useState(18);
   const currentYear = new Date().getFullYear();
   const experienceYears = Math.max(0, currentYear - 2020);
 
@@ -65,8 +66,11 @@ function App() {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
 
-    const updateCalendarMonths = (event: MediaQueryList | MediaQueryListEvent) => {
+    const updateCalendarMonths = (
+      event: MediaQueryList | MediaQueryListEvent,
+    ) => {
       setCalendarMonthsBack(event.matches ? 3 : 10);
+      setCalendarBlockSize(event.matches ? 16 : 18);
     };
 
     updateCalendarMonths(mediaQuery);
@@ -432,7 +436,9 @@ function App() {
               style={{ "--stagger": "150ms" } as React.CSSProperties}
             >
               <GraduationCap className="w-5 h-5 mb-4 text-zinc-500" />
-              <h2 className="text-2xl font-semibold mb-4">Courses &amp; Certifications</h2>
+              <h2 className="text-2xl font-semibold mb-4">
+                Courses &amp; Certifications
+              </h2>
               <div className="space-y-4">
                 <div>
                   <h3 className="font-bold">Professional Cloud Developer</h3>
@@ -491,7 +497,7 @@ function App() {
                   <GitHubCalendar
                     username="jaqb8"
                     colorScheme="dark"
-                    blockSize={18}
+                    blockSize={calendarBlockSize}
                     blockMargin={6}
                     fontSize={16}
                     hideColorLegend={calendarMonthsBack === 3}
