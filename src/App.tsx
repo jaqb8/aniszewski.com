@@ -101,7 +101,7 @@ const featuredProjects: TimelineGroup[] = [
     ],
   },
   {
-    organization: "Michał Kapusz",
+    organization: "kapusz-tenis.pl",
     entries: [
       {
         title:
