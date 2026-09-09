@@ -19,9 +19,9 @@ const projects = [
 ];
 
 const credentials = [
-  { issuer: "Google Cloud", name: "Professional Cloud Developer", date: "APR 2026", href: "https://www.credly.com/badges/40f6e45b-cef3-4de4-aa94-ae26f96b7d44/public_url" },
-  { issuer: "Przeprogramowani", name: "10xDevs 2", date: "DEC 2025", href: "https://credsverse.com/credentials/cb6b9a1e-674f-4a44-b1f5-6a6dadf39f2d" },
-  { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036" },
+  { issuer: "Google Cloud", name: "Professional Cloud Developer", date: "APR 2026", href: "https://www.credly.com/badges/40f6e45b-cef3-4de4-aa94-ae26f96b7d44/public_url", badge: CloudDeveloperCertification, badgeAlt: "Google Cloud Professional Cloud Developer badge" },
+  { issuer: "Przeprogramowani", name: "10xDevs 2", date: "DEC 2025", href: "https://credsverse.com/credentials/cb6b9a1e-674f-4a44-b1f5-6a6dadf39f2d", badge: undefined, badgeAlt: undefined },
+  { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036", badge: undefined, badgeAlt: undefined },
 ];
 
 const engineeringToolkit = ["Python", "TypeScript", "React", "FastAPI", "Django", "AI agents", "Agentic workflows", "Context engineering", "Automation"];
@@ -122,8 +122,8 @@ function App() {
         </section>
 
         <section className="credentials section-pad reveal">
-          <div className="credential-heading"><SectionLabel>Continuous learning / verified</SectionLabel><h2>Credentials</h2><img src={CloudDeveloperCertification} alt="Google Cloud Professional Cloud Developer badge" /></div>
-          <div className="credential-list">{credentials.map((credential) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className="credential-row focus-ring"><span>{credential.issuer}</span><strong>{credential.name}</strong><time>{credential.date}</time><ExternalArrow /></a>)}</div>
+          <div className="credential-heading"><SectionLabel>Continuous learning / verified</SectionLabel><h2>Credentials</h2></div>
+          <div className="credential-list">{credentials.map((credential) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className={`credential-row focus-ring${credential.badge ? " has-badge" : ""}`}>{credential.badge && <img className="credential-badge" src={credential.badge} alt={credential.badgeAlt} />}<span>{credential.issuer}</span><strong>{credential.name}</strong><time>{credential.date}</time><ExternalArrow /></a>)}</div>
         </section>
 
         <section className="github-section section-pad reveal">
