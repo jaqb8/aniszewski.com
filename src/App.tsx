@@ -5,8 +5,7 @@ import Avatar from "./assets/avatar.jpg";
 import Resume from "./assets/resume.pdf";
 
 const work = [
-  { company: "STX Next", role: "Full Stack Developer", date: "Jul 2026 — Present" },
-  { company: "STX Next", role: "Senior Python Developer", date: "Jun 2025 — Jul 2026" },
+  { company: "STX Next", role: "Full Stack Developer", date: "Jun 2025 — Present" },
   { company: "NotBug", role: "Full-Stack Software Engineer", date: "Jan 2024 — Apr 2025" },
   { company: "TietoEvry", role: "Python Software Engineer", date: "Nov 2022 — Sep 2024" },
   { company: "Nokia", role: "Software Engineer", date: "Jan 2020 — Oct 2022" },
@@ -107,7 +106,7 @@ function App() {
         </section>
 
         <section id="work" className="work-section section-pad">
-          <div className="section-heading reveal"><div><SectionLabel>Selected outcomes / shipped products</SectionLabel><h2>From intent to<br /><span>working software.</span></h2></div></div>
+          <div className="section-heading reveal"><div><SectionLabel>Products</SectionLabel><h2>From intent to<br /><span>working software.</span></h2></div></div>
           <div className="project-list">{projects.map((project, index) => (
             <a key={project.name} href={project.href} target="_blank" rel="noopener noreferrer" className="project-row reveal focus-ring">
               <span className="project-number">0{index + 1}</span><div><span className="project-tag">{project.tag}</span><h3>{project.name}</h3></div><p>{project.description}</p><span className="project-open"><ExternalArrow /></span>
@@ -117,22 +116,22 @@ function App() {
 
         <section id="stack" className="stack-section section-pad">
           <div className="stack-panel reveal"><SectionLabel>Toolkit / technologies &amp; workflows</SectionLabel><h2>Strong fundamentals.<br />Better leverage.</h2><div className="stack-tape" aria-label="Engineering technologies and workflows">{[...engineeringToolkit, ...engineeringToolkit].map((item, index) => <span key={`${item}-${index}`}>{item}<b>✳</b></span>)}</div></div>
-          <div className="experience-panel reveal"><SectionLabel>Engineering timeline / since 2020</SectionLabel><div className="experience-list">{work.map((item, index) => <div className="experience-row" key={`${item.company}-${item.role}`}><span className="experience-index">0{index + 1}</span><div><strong>{item.company}</strong><span>{item.role}</span></div><time>{item.date}</time></div>)}</div></div>
+          <div className="experience-panel reveal"><SectionLabel>Engineering timeline</SectionLabel><div className="experience-list">{work.map((item, index) => <div className="experience-row" key={`${item.company}-${item.role}`}><span className="experience-index">0{index + 1}</span><div><strong>{item.company}</strong><span>{item.role}</span></div><time>{item.date}</time></div>)}</div></div>
         </section>
 
         <section className="credentials section-pad reveal">
-          <div className="credential-heading"><SectionLabel>Continuous learning / verified</SectionLabel><h2>Credentials</h2></div>
+          <div className="credential-heading"><SectionLabel>Continuous learning</SectionLabel><h2>Credentials</h2></div>
           <div className="credential-list">{credentials.map((credential, index) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className="credential-row focus-ring"><span className="credential-number">0{index + 1}</span><div className="credential-main"><div><span className="credential-issuer">{credential.issuer}</span><h3>{credential.name}</h3></div></div><time>{credential.date}</time><span className="credential-open"><ExternalArrow /></span></a>)}</div>
         </section>
 
         <section className="github-section section-pad reveal">
-          <div className="section-heading compact"><div><SectionLabel>Open source / recent signal</SectionLabel><h2>GitHub activity</h2></div></div>
+          <div className="section-heading compact"><div><SectionLabel>Open source</SectionLabel><h2>GitHub activity</h2></div></div>
           <div className="calendar-wrap"><GitHubCalendar username="jaqb8" colorScheme="dark" blockSize={14} blockMargin={5} fontSize={13} theme={{ dark: ["#17171b", "#38206f", "#5730c9", "#7c4dff", "#a88bff"] }} /></div>
         </section>
 
         <section id="contact" className="contact-section">
           <div className="contact-orbit" aria-hidden="true"><span>LET’S BUILD / LET’S BUILD / LET’S BUILD /</span></div>
-          <SectionLabel>Contact / open channel</SectionLabel><h2>Need solid software?<br /><em>Let’s build it.</em></h2><p>Bring the outcome you want. I’ll combine proven engineering practices with modern AI-assisted workflows to help you ship it well.</p>
+          <SectionLabel>Contact</SectionLabel><h2>Need solid software?<br /><em>Let’s build it.</em></h2><p>Bring the outcome you want. I’ll combine proven engineering practices with modern AI-assisted workflows to help you ship it well.</p>
           <a href="mailto:jakubaniszewski@pm.me" className="contact-link focus-ring"><span>Email</span> jakubaniszewski@pm.me <ExternalArrow /></a>
           <div className="social-links"><a href="https://github.com/jaqb8" target="_blank" rel="noopener noreferrer" className="focus-ring"><Github /> GitHub</a><a href="https://www.linkedin.com/in/jakub-aniszewski/" target="_blank" rel="noopener noreferrer" className="focus-ring"><ExternalArrow /> LinkedIn</a><a href={Resume} target="_blank" rel="noopener noreferrer" className="focus-ring"><Download /> Download my Resume!</a></div>
         </section>

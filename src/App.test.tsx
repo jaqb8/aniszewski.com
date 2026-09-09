@@ -15,7 +15,7 @@ describe('App', () => {
     render(<App />);
     expect(screen.getByText('Work')).toBeInTheDocument();
     expect(screen.getByText('Tech stack')).toBeInTheDocument();
-    expect(screen.getByText('Contact')).toBeInTheDocument();
+    expect(screen.getAllByText('Contact')).toHaveLength(2);
   });
 
   it('shows hero image and resume link', () => {
