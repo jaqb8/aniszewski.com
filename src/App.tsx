@@ -92,7 +92,8 @@ function App() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
             <p className="eyebrow hero-enter">FULL-STACK ENGINEER · WROCŁAW, PL</p>
-            <h1 className="hero-title hero-enter">I turn complex<span>systems into</span><em>things that ship.</em></h1>
+            <h1 className="hero-name hero-enter">Jakub<span>Aniszewski.</span></h1>
+            <p className="hero-thesis hero-enter">I turn complex systems into <span>things that ship.</span></p>
             <p className="hero-intro hero-enter">Python at the core. TypeScript at the edges. Product judgment all the way through.</p>
             <div className="hero-actions hero-enter">
               <a href="#work" className="button button-primary focus-ring">Explore my work <ArrowDown className="h-4 w-4" /></a>
@@ -100,7 +101,7 @@ function App() {
             </div>
           </div>
           <div className="portrait-stage hero-enter">
-            <div className="portrait-index">BUILD / 06</div>
+            <div className="portrait-index">JAKUB / CURRENT</div>
             <div className="portrait-frame"><img src={Avatar} alt="Jakub Aniszewski" /><div className="portrait-scan" aria-hidden="true" /></div>
             <div className="portrait-caption"><span>{experienceYears}+ YEARS IN PRODUCTION</span><span>PY / TS</span></div>
           </div>
