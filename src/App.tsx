@@ -32,7 +32,9 @@ function ExternalArrow() { return <ArrowUpRight aria-hidden="true" className="h-
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [calendarLayout, setCalendarLayout] = useState({ weeks: 52, blockSize: 14 });
   const menuRef = useRef<HTMLDivElement>(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
   const currentYear = new Date().getFullYear();
   const experienceYears = Math.max(0, currentYear - 2020);
   const toggleMenu = useCallback(() => setMenuOpen((value) => !value), []);
@@ -62,6 +64,23 @@ function App() {
       if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
     }), { threshold: 0.12 });
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!("ResizeObserver" in window) || !calendarRef.current) return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      const width = entry.contentRect.width;
+      const blockSize = width < 520 ? 12 : 14;
+      const availableWidth = Math.max(0, width - 8);
+      const weeks = Math.max(8, Math.min(52, Math.floor(availableWidth / (blockSize + 5))));
+      setCalendarLayout((current) =>
+        current.weeks === weeks && current.blockSize === blockSize ? current : { weeks, blockSize },
+      );
+    });
+
+    observer.observe(calendarRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -126,7 +145,7 @@ function App() {
 
         <section className="github-section section-pad reveal">
           <div className="section-heading compact"><div><SectionLabel>Open source</SectionLabel><h2>GitHub activity</h2></div></div>
-          <div className="calendar-wrap"><GitHubCalendar username="jaqb8" colorScheme="dark" blockSize={14} blockMargin={5} fontSize={13} theme={{ dark: ["#17171b", "#38206f", "#5730c9", "#7c4dff", "#a88bff"] }} /></div>
+          <div className="calendar-wrap" ref={calendarRef}><GitHubCalendar username="jaqb8" colorScheme="dark" blockSize={calendarLayout.blockSize} blockMargin={5} fontSize={13} hideColorLegend={calendarLayout.weeks < 24} transformData={(contributions) => contributions.slice(-(calendarLayout.weeks * 7))} labels={{ totalCount: `{{count}} contributions in the last ${calendarLayout.weeks} weeks` }} theme={{ dark: ["#17171b", "#38206f", "#5730c9", "#7c4dff", "#a88bff"] }} /></div>
         </section>
 
         <section id="contact" className="contact-section">
