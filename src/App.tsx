@@ -67,7 +67,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  const navLinks = [["About", "#profile"], ["Work", "#work"], ["Stack", "#stack"], ["Contact", "#contact"]];
+  const navLinks = [["Work", "#work"], ["Stack", "#stack"], ["Contact", "#contact"]];
 
   return (
     <div className="site-shell">
@@ -105,17 +105,6 @@ function App() {
             <div className="portrait-caption"><span>{experienceYears}+ YEARS IN PRODUCTION</span><span>PY / TS</span></div>
           </div>
           <div className="signal-line" aria-hidden="true"><span /></div>
-        </section>
-
-        <section id="profile" className="manifesto section-pad reveal">
-          <SectionLabel>Profile / what I optimize for</SectionLabel>
-          <div className="manifesto-grid">
-            <p className="manifesto-lead">Clear thinking.<br />Calm execution.<br /><span>Useful software.</span></p>
-            <div className="manifesto-copy">
-              <p>I build production-ready web products that feel fast, stay reliable, and make teams proud to ship. I care about the invisible work too: maintainability, honest communication, and leaving systems easier to understand than I found them.</p>
-              <div className="principles" aria-label="Working principles"><span>01 / OWN THE OUTCOME</span><span>02 / MAKE PROGRESS VISIBLE</span><span>03 / BUILD FOR THE NEXT DEV</span></div>
-            </div>
-          </div>
         </section>
 
         <section id="work" className="work-section section-pad">
