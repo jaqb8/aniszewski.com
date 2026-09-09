@@ -24,7 +24,7 @@ const credentials = [
   { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036" },
 ];
 
-const stack = ["Python", "FastAPI", "Django", "Flask", "TypeScript", "React"];
+const aiPractice = ["AI agents", "Agentic workflows", "Tool use", "Context engineering", "Evaluations", "Automation"];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span aria-hidden="true">+</span> {children}</p>;
@@ -67,7 +67,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  const navLinks = [["Work", "#work"], ["Stack", "#stack"], ["Contact", "#contact"]];
+  const navLinks = [["Work", "#work"], ["AI practice", "#stack"], ["Contact", "#contact"]];
 
   return (
     <div className="site-shell">
@@ -78,7 +78,7 @@ function App() {
           <div className="desktop-nav">
             {navLinks.map(([label, href]) => <a key={href} href={href} className="nav-link focus-ring">{label}</a>)}
           </div>
-          <a href="mailto:jakubaniszewski@pm.me?subject=Let%27s%20work%20together" className="availability focus-ring"><span className="status-dot" /> Available for a challenge</a>
+          <a href="mailto:jakubaniszewski@pm.me?subject=Let%27s%20work%20together" className="availability focus-ring"><span className="status-dot" /> Open to AI-native work</a>
           <button className="menu-trigger focus-ring" onClick={toggleMenu} aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} aria-controls="mobile-menu">{menuOpen ? <X /> : <Menu />}</button>
         </nav>
       </header>
@@ -91,10 +91,10 @@ function App() {
         <section id="top" className="hero">
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow hero-enter">FULL-STACK ENGINEER · WROCŁAW, PL</p>
+            <p className="eyebrow hero-enter">AI-NATIVE SOFTWARE ENGINEER · WROCŁAW, PL</p>
             <h1 className="hero-name hero-enter">Jakub<span>Aniszewski.</span></h1>
-            <p className="hero-thesis hero-enter">I turn complex systems into <span>things that ship.</span></p>
-            <p className="hero-intro hero-enter">Python at the core. TypeScript at the edges. Product judgment all the way through.</p>
+            <p className="hero-thesis hero-enter">I engineer software with <span>AI in the loop.</span></p>
+            <p className="hero-intro hero-enter">I use agents and agentic workflows to explore, build, verify, and ship better software. The language is a tool; the outcome is the point.</p>
             <div className="hero-actions hero-enter">
               <a href="#work" className="button button-primary focus-ring">Explore my work <ArrowDown className="h-4 w-4" /></a>
               <a href={Resume} target="_blank" rel="noopener noreferrer" className="button button-ghost focus-ring">Resume <Download className="h-4 w-4" /></a>
@@ -103,13 +103,13 @@ function App() {
           <div className="portrait-stage hero-enter">
             <div className="portrait-index">JAKUB / CURRENT</div>
             <div className="portrait-frame"><img src={Avatar} alt="Jakub Aniszewski" /><div className="portrait-scan" aria-hidden="true" /></div>
-            <div className="portrait-caption"><span>{experienceYears}+ YEARS IN PRODUCTION</span><span>PY / TS</span></div>
+            <div className="portrait-caption"><span>{experienceYears}+ YEARS ENGINEERING SOFTWARE</span><span>AI / AGENTS</span></div>
           </div>
           <div className="signal-line" aria-hidden="true"><span /></div>
         </section>
 
         <section id="work" className="work-section section-pad">
-          <div className="section-heading reveal"><div><SectionLabel>Selected work / live builds</SectionLabel><h2>Work that earns<br /><span>its place.</span></h2></div></div>
+          <div className="section-heading reveal"><div><SectionLabel>Selected outcomes / shipped products</SectionLabel><h2>From intent to<br /><span>working software.</span></h2></div></div>
           <div className="project-list">{projects.map((project, index) => (
             <a key={project.name} href={project.href} target="_blank" rel="noopener noreferrer" className="project-row reveal focus-ring">
               <span className="project-number">0{index + 1}</span><div><span className="project-tag">{project.tag}</span><h3>{project.name}</h3></div><p>{project.description}</p><span className="project-open"><ExternalArrow /></span>
@@ -118,12 +118,12 @@ function App() {
         </section>
 
         <section id="stack" className="stack-section section-pad">
-          <div className="stack-panel reveal"><SectionLabel>Toolkit / daily drivers</SectionLabel><h2>Built for both<br />sides of the stack.</h2><div className="stack-tape" aria-label="Technology stack">{[...stack, ...stack].map((item, index) => <span key={`${item}-${index}`}>{item}<b>✳</b></span>)}</div></div>
-          <div className="experience-panel reveal"><SectionLabel>Timeline / since 2020</SectionLabel><div className="experience-list">{work.map((item, index) => <div className="experience-row" key={`${item.company}-${item.role}`}><span className="experience-index">0{index + 1}</span><div><strong>{item.company}</strong><span>{item.role}</span></div><time>{item.date}</time></div>)}</div></div>
+          <div className="stack-panel reveal"><SectionLabel>AI-native practice / daily systems</SectionLabel><h2>Agents are part of<br />how I engineer.</h2><div className="stack-tape" aria-label="AI engineering practices">{[...aiPractice, ...aiPractice].map((item, index) => <span key={`${item}-${index}`}>{item}<b>✳</b></span>)}</div></div>
+          <div className="experience-panel reveal"><SectionLabel>Engineering timeline / since 2020</SectionLabel><div className="experience-list">{work.map((item, index) => <div className="experience-row" key={`${item.company}-${item.role}`}><span className="experience-index">0{index + 1}</span><div><strong>{item.company}</strong><span>{item.role}</span></div><time>{item.date}</time></div>)}</div></div>
         </section>
 
         <section className="credentials section-pad reveal">
-          <div className="credential-heading"><SectionLabel>Proof / keep learning</SectionLabel><h2>Credentials</h2><img src={CloudDeveloperCertification} alt="Google Cloud Professional Cloud Developer badge" /></div>
+          <div className="credential-heading"><SectionLabel>Continuous learning / verified</SectionLabel><h2>Credentials</h2><img src={CloudDeveloperCertification} alt="Google Cloud Professional Cloud Developer badge" /></div>
           <div className="credential-list">{credentials.map((credential) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className="credential-row focus-ring"><span>{credential.issuer}</span><strong>{credential.name}</strong><time>{credential.date}</time><ExternalArrow /></a>)}</div>
         </section>
 
@@ -134,7 +134,7 @@ function App() {
 
         <section id="contact" className="contact-section">
           <div className="contact-orbit" aria-hidden="true"><span>LET’S BUILD / LET’S BUILD / LET’S BUILD /</span></div>
-          <SectionLabel>Contact / open channel</SectionLabel><h2>Have a hard problem?<br /><em>Send it my way.</em></h2><p>I reply within 24 hours. Clear brief optional — curiosity required.</p>
+          <SectionLabel>Contact / open channel</SectionLabel><h2>Building with AI?<br /><em>Let’s make it real.</em></h2><p>Bring the outcome you want. I’ll help turn it into a software system that agents can accelerate and humans can trust.</p>
           <a href="mailto:jakubaniszewski@pm.me" className="contact-link focus-ring"><span>Email</span> jakubaniszewski@pm.me <ExternalArrow /></a>
           <div className="social-links"><a href="https://github.com/jaqb8" target="_blank" rel="noopener noreferrer" className="focus-ring"><Github /> GitHub</a><a href="https://www.linkedin.com/in/jakub-aniszewski/" target="_blank" rel="noopener noreferrer" className="focus-ring"><ExternalArrow /> LinkedIn</a><a href={Resume} target="_blank" rel="noopener noreferrer" className="focus-ring"><Download /> Download my Resume!</a></div>
         </section>
