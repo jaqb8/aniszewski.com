@@ -76,13 +76,17 @@ button, a { font: inherit; } a { color: inherit; text-decoration: none; }
 .experience-row { display: grid; grid-template-columns: 36px 1fr auto; gap: 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--line); }
 .experience-index { color: var(--violet-light); font: .64rem "JetBrains Mono", monospace; }.experience-row strong, .experience-row div span { display: block; }.experience-row div span { margin-top: .15rem; color: var(--muted); font-size: .86rem; }.experience-row time { color: var(--muted); font: .63rem "JetBrains Mono", monospace; text-align: right; }
 
-.credentials { display: grid; grid-template-columns: .7fr 1.3fr; gap: 6rem; }.credential-heading { position: relative; }.credential-heading h2 { font-size: clamp(3rem, 5vw, 5.2rem); }
+.credentials { border-top: 1px solid var(--line); }.credential-heading { margin-bottom: 4rem; }.credential-heading h2 { font-size: clamp(3rem, 6vw, 6.3rem); }
 .credential-list { border-top: 1px solid var(--line); }
-.credential-row { min-height: 105px; display: grid; grid-template-columns: .8fr 1.5fr auto 20px; gap: 1.5rem; align-items: center; border-bottom: 1px solid var(--line); transition: color .2s, padding .2s; }
-.credential-row.has-badge { grid-template-columns: 64px .8fr 1.5fr auto 20px; }
-.credential-badge { width: 58px; height: 58px; object-fit: contain; filter: grayscale(1); transition: filter .2s, transform .2s var(--ease); }
+.credential-row { min-height: 150px; display: grid; grid-template-columns: 70px 1fr auto 48px; gap: 2rem; align-items: center; border-bottom: 1px solid var(--line); transition: background .25s, padding .25s var(--ease); }
+.credential-row:hover { padding: 0 1.25rem; background: #0b0b0e; }
+.credential-number, .credential-issuer, .credential-row time { color: var(--muted); font: .68rem "JetBrains Mono", monospace; text-transform: uppercase; }
+.credential-main { display: flex; align-items: center; gap: 1.5rem; }
+.credential-main h3 { margin: .65rem 0 0; font-size: clamp(1.55rem, 2.6vw, 2.5rem); line-height: 1; letter-spacing: -.04em; }
+.credential-badge { width: 70px; height: 70px; flex: 0 0 auto; object-fit: contain; filter: grayscale(1); transition: filter .2s, transform .2s var(--ease); }
 .credential-row:hover .credential-badge { filter: grayscale(0); transform: scale(1.05); }
-.credential-row:hover { padding-left: 1rem; color: var(--violet-light); }.credential-row span, .credential-row time { color: var(--muted); font: .66rem "JetBrains Mono", monospace; text-transform: uppercase; }
+.credential-open { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid var(--line); transition: color .2s, background .2s; }
+.credential-row:hover .credential-open { color: var(--ink); background: var(--paper); }
 
 .github-section { border-top: 1px solid var(--line); }.section-heading.compact { align-items: start; }.section-heading.compact h2 { font-size: clamp(2.6rem, 5vw, 5rem); }
 .calendar-wrap { overflow-x: auto; padding: 2.5rem; border: 1px solid var(--line); background: #09090b; scrollbar-color: var(--violet) var(--panel); }.calendar-wrap > div { min-width: 760px; }
@@ -114,19 +118,17 @@ footer { width: min(100% - 3rem, 1240px); min-height: 120px; margin: auto; displ
   .hero-intro { order: 5; }
   .hero-actions { order: 6; }
   .signal-line { display: none; }
-  .credentials { grid-template-columns: 1fr; gap: 3rem; }.stack-section { grid-template-columns: 1fr; }.stack-panel, .experience-panel { padding: 80px 1.5rem; }.experience-panel { padding-left: 1.5rem; }
+  .stack-section { grid-template-columns: 1fr; }.stack-panel, .experience-panel { padding: 80px 1.5rem; }.experience-panel { padding-left: 1.5rem; }
   .project-row { grid-template-columns: 45px 1fr 42px; gap: 1rem; padding: 2rem 0; }.project-row p { grid-column: 2 / 4; margin: 0; }.project-open { grid-column: 3; grid-row: 1; }
-  .credential-row { grid-template-columns: 1fr auto 20px; padding: 1.5rem 0; }.credential-row span, .credential-row strong { grid-column: 1; }.credential-row time { grid-column: 2; grid-row: 1 / 3; }.credential-row svg { grid-column: 3; grid-row: 1 / 3; }
-  .credential-row.has-badge { grid-template-columns: 56px 1fr auto 20px; }
-  .credential-row.has-badge .credential-badge { grid-column: 1; grid-row: 1 / 3; width: 50px; height: 50px; }
-  .credential-row.has-badge span, .credential-row.has-badge strong { grid-column: 2; }
-  .credential-row.has-badge time { grid-column: 3; }
-  .credential-row.has-badge svg { grid-column: 4; }
+  .credential-row { grid-template-columns: 45px 1fr 42px; gap: 1rem; padding: 2rem 0; }
+  .credential-row time { grid-column: 2; margin-top: -.6rem; }
+  .credential-open { grid-column: 3; grid-row: 1 / 3; }
   .social-links { position: relative; right: auto; bottom: auto; margin-top: 5rem; flex-wrap: wrap; }
 }
 @media (max-width: 560px) {
   .nav-wrap, .hero, .section-pad, footer { width: min(100% - 2rem, 1240px); }.hero { padding-bottom: 70px; }.hero-name { font-size: 4.15rem; }.hero-thesis { font-size: 1.9rem; }.hero-actions { align-items: stretch; flex-direction: column; }.button { width: 100%; }
-  .section-pad { padding: 82px 0; }.section-heading { margin-bottom: 2.5rem; }.project-row { grid-template-columns: 32px 1fr 36px; }.project-number { font-size: .6rem; }.project-row h3 { font-size: 1.55rem; }.project-open { width: 36px; height: 36px; }
+  .section-pad { padding: 82px 0; }.section-heading, .credential-heading { margin-bottom: 2.5rem; }.project-row, .credential-row { grid-template-columns: 32px 1fr 36px; }.project-number, .credential-number { font-size: .6rem; }.project-row h3, .credential-main h3 { font-size: 1.55rem; }.project-open, .credential-open { width: 36px; height: 36px; }
+  .credential-main { gap: 1rem; }.credential-badge { width: 52px; height: 52px; }
   .experience-row { grid-template-columns: 28px 1fr; }.experience-row time { grid-column: 2; margin-top: .3rem; text-align: left; }.calendar-wrap { padding: 1.25rem; }
   .contact-section { min-height: 650px; padding: 90px 1rem; }.contact-section h2 { font-size: 3.5rem; }.contact-link { font-size: 1rem; }footer { grid-template-columns: 1fr 1fr; padding: 2rem 0; gap: 1rem; }.footer-mark { grid-column: 1 / 3; }footer p:nth-of-type(1) { text-align: left; }.footer-status { text-align: right; }
 }

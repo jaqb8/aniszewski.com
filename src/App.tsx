@@ -123,7 +123,7 @@ function App() {
 
         <section className="credentials section-pad reveal">
           <div className="credential-heading"><SectionLabel>Continuous learning / verified</SectionLabel><h2>Credentials</h2></div>
-          <div className="credential-list">{credentials.map((credential) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className={`credential-row focus-ring${credential.badge ? " has-badge" : ""}`}>{credential.badge && <img className="credential-badge" src={credential.badge} alt={credential.badgeAlt} />}<span>{credential.issuer}</span><strong>{credential.name}</strong><time>{credential.date}</time><ExternalArrow /></a>)}</div>
+          <div className="credential-list">{credentials.map((credential, index) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className="credential-row focus-ring"><span className="credential-number">0{index + 1}</span><div className="credential-main">{credential.badge && <img className="credential-badge" src={credential.badge} alt={credential.badgeAlt} />}<div><span className="credential-issuer">{credential.issuer}</span><h3>{credential.name}</h3></div></div><time>{credential.date}</time><span className="credential-open"><ExternalArrow /></span></a>)}</div>
         </section>
 
         <section className="github-section section-pad reveal">
