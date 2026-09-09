@@ -24,7 +24,7 @@ const credentials = [
   { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036" },
 ];
 
-const aiPractice = ["AI agents", "Agentic workflows", "Tool use", "Context engineering", "Evaluations", "Automation"];
+const engineeringToolkit = ["Python", "TypeScript", "React", "FastAPI", "Django", "AI agents", "Agentic workflows", "Context engineering", "Evaluations", "Automation"];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span aria-hidden="true">+</span> {children}</p>;
@@ -67,7 +67,7 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  const navLinks = [["Work", "#work"], ["AI practice", "#stack"], ["Contact", "#contact"]];
+  const navLinks = [["Work", "#work"], ["Tech stack", "#stack"], ["Contact", "#contact"]];
 
   return (
     <div className="site-shell">
@@ -78,7 +78,7 @@ function App() {
           <div className="desktop-nav">
             {navLinks.map(([label, href]) => <a key={href} href={href} className="nav-link focus-ring">{label}</a>)}
           </div>
-          <a href="mailto:jakubaniszewski@pm.me?subject=Let%27s%20work%20together" className="availability focus-ring"><span className="status-dot" /> Open to AI-native work</a>
+          <a href="mailto:jakubaniszewski@pm.me?subject=Let%27s%20work%20together" className="availability focus-ring"><span className="status-dot" /> Open to new work</a>
           <button className="menu-trigger focus-ring" onClick={toggleMenu} aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} aria-controls="mobile-menu">{menuOpen ? <X /> : <Menu />}</button>
         </nav>
       </header>
@@ -91,10 +91,10 @@ function App() {
         <section id="top" className="hero">
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
-            <p className="eyebrow hero-enter">AI-NATIVE SOFTWARE ENGINEER · WROCŁAW, PL</p>
+            <p className="eyebrow hero-enter">SOFTWARE ENGINEER · WROCŁAW, PL</p>
             <h1 className="hero-name hero-enter">Jakub<span>Aniszewski.</span></h1>
-            <p className="hero-thesis hero-enter">I engineer software with <span>AI in the loop.</span></p>
-            <p className="hero-intro hero-enter">I use agents and agentic workflows to explore, build, verify, and ship better software. The language is a tool; the outcome is the point.</p>
+            <p className="hero-thesis hero-enter">I build reliable software with <span>AI in the toolkit.</span></p>
+            <p className="hero-intro hero-enter">I work across the stack and use agents and agentic workflows where they improve speed and quality. Strong engineering fundamentals and product judgment still come first.</p>
             <div className="hero-actions hero-enter">
               <a href="#work" className="button button-primary focus-ring">Explore my work <ArrowDown className="h-4 w-4" /></a>
               <a href={Resume} target="_blank" rel="noopener noreferrer" className="button button-ghost focus-ring">Resume <Download className="h-4 w-4" /></a>
@@ -103,7 +103,7 @@ function App() {
           <div className="portrait-stage hero-enter">
             <div className="portrait-index">JAKUB / CURRENT</div>
             <div className="portrait-frame"><img src={Avatar} alt="Jakub Aniszewski" /><div className="portrait-scan" aria-hidden="true" /></div>
-            <div className="portrait-caption"><span>{experienceYears}+ YEARS ENGINEERING SOFTWARE</span><span>AI / AGENTS</span></div>
+            <div className="portrait-caption"><span>{experienceYears}+ YEARS ENGINEERING SOFTWARE</span><span>CODE / AI</span></div>
           </div>
           <div className="signal-line" aria-hidden="true"><span /></div>
         </section>
@@ -118,7 +118,7 @@ function App() {
         </section>
 
         <section id="stack" className="stack-section section-pad">
-          <div className="stack-panel reveal"><SectionLabel>AI-native practice / daily systems</SectionLabel><h2>Agents are part of<br />how I engineer.</h2><div className="stack-tape" aria-label="AI engineering practices">{[...aiPractice, ...aiPractice].map((item, index) => <span key={`${item}-${index}`}>{item}<b>✳</b></span>)}</div></div>
+          <div className="stack-panel reveal"><SectionLabel>Toolkit / technologies &amp; workflows</SectionLabel><h2>Strong fundamentals.<br />Better leverage.</h2><div className="stack-tape" aria-label="Engineering technologies and workflows">{[...engineeringToolkit, ...engineeringToolkit].map((item, index) => <span key={`${item}-${index}`}>{item}<b>✳</b></span>)}</div></div>
           <div className="experience-panel reveal"><SectionLabel>Engineering timeline / since 2020</SectionLabel><div className="experience-list">{work.map((item, index) => <div className="experience-row" key={`${item.company}-${item.role}`}><span className="experience-index">0{index + 1}</span><div><strong>{item.company}</strong><span>{item.role}</span></div><time>{item.date}</time></div>)}</div></div>
         </section>
 
@@ -134,7 +134,7 @@ function App() {
 
         <section id="contact" className="contact-section">
           <div className="contact-orbit" aria-hidden="true"><span>LET’S BUILD / LET’S BUILD / LET’S BUILD /</span></div>
-          <SectionLabel>Contact / open channel</SectionLabel><h2>Building with AI?<br /><em>Let’s make it real.</em></h2><p>Bring the outcome you want. I’ll help turn it into a software system that agents can accelerate and humans can trust.</p>
+          <SectionLabel>Contact / open channel</SectionLabel><h2>Need solid software?<br /><em>Let’s build it.</em></h2><p>Bring the outcome you want. I’ll combine proven engineering practices with modern AI-assisted workflows to help you ship it well.</p>
           <a href="mailto:jakubaniszewski@pm.me" className="contact-link focus-ring"><span>Email</span> jakubaniszewski@pm.me <ExternalArrow /></a>
           <div className="social-links"><a href="https://github.com/jaqb8" target="_blank" rel="noopener noreferrer" className="focus-ring"><Github /> GitHub</a><a href="https://www.linkedin.com/in/jakub-aniszewski/" target="_blank" rel="noopener noreferrer" className="focus-ring"><ExternalArrow /> LinkedIn</a><a href={Resume} target="_blank" rel="noopener noreferrer" className="focus-ring"><Download /> Download my Resume!</a></div>
         </section>

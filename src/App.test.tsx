@@ -14,7 +14,7 @@ describe('App', () => {
   it('renders navigation links', () => {
     render(<App />);
     expect(screen.getByText('Work')).toBeInTheDocument();
-    expect(screen.getByText('AI practice')).toBeInTheDocument();
+    expect(screen.getByText('Tech stack')).toBeInTheDocument();
     expect(screen.getByText('Contact')).toBeInTheDocument();
   });
 
