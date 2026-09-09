@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Download, Github, Menu, X } from "lucide-react";
 import GitHubCalendar from "react-github-calendar";
 import Avatar from "./assets/avatar.jpg";
-import CloudDeveloperCertification from "./assets/professional-cloud-developer-certification.png";
 import Resume from "./assets/resume.pdf";
 
 const work = [
@@ -19,9 +18,9 @@ const projects = [
 ];
 
 const credentials = [
-  { issuer: "Google Cloud", name: "Professional Cloud Developer", date: "APR 2026", href: "https://www.credly.com/badges/40f6e45b-cef3-4de4-aa94-ae26f96b7d44/public_url", badge: CloudDeveloperCertification, badgeAlt: "Google Cloud Professional Cloud Developer badge" },
-  { issuer: "Przeprogramowani", name: "10xDevs 2", date: "DEC 2025", href: "https://credsverse.com/credentials/cb6b9a1e-674f-4a44-b1f5-6a6dadf39f2d", badge: undefined, badgeAlt: undefined },
-  { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036", badge: undefined, badgeAlt: undefined },
+  { issuer: "Google Cloud", name: "Professional Cloud Developer", date: "APR 2026", href: "https://www.credly.com/badges/40f6e45b-cef3-4de4-aa94-ae26f96b7d44/public_url" },
+  { issuer: "Przeprogramowani", name: "10xDevs 2", date: "DEC 2025", href: "https://credsverse.com/credentials/cb6b9a1e-674f-4a44-b1f5-6a6dadf39f2d" },
+  { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036" },
 ];
 
 const engineeringToolkit = ["Python", "TypeScript", "React", "FastAPI", "Django", "AI agents", "Agentic workflows", "Context engineering", "Automation"];
@@ -123,7 +122,7 @@ function App() {
 
         <section className="credentials section-pad reveal">
           <div className="credential-heading"><SectionLabel>Continuous learning / verified</SectionLabel><h2>Credentials</h2></div>
-          <div className="credential-list">{credentials.map((credential, index) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className="credential-row focus-ring"><span className="credential-number">0{index + 1}</span><div className="credential-main">{credential.badge && <img className="credential-badge" src={credential.badge} alt={credential.badgeAlt} />}<div><span className="credential-issuer">{credential.issuer}</span><h3>{credential.name}</h3></div></div><time>{credential.date}</time><span className="credential-open"><ExternalArrow /></span></a>)}</div>
+          <div className="credential-list">{credentials.map((credential, index) => <a key={credential.name} href={credential.href} target="_blank" rel="noopener noreferrer" className="credential-row focus-ring"><span className="credential-number">0{index + 1}</span><div className="credential-main"><div><span className="credential-issuer">{credential.issuer}</span><h3>{credential.name}</h3></div></div><time>{credential.date}</time><span className="credential-open"><ExternalArrow /></span></a>)}</div>
         </section>
 
         <section className="github-section section-pad reveal">
@@ -139,7 +138,7 @@ function App() {
         </section>
       </main>
 
-      <footer><a href="#top" className="footer-mark focus-ring">JA/DEV</a><p>© {currentYear} Jakub Aniszewski IT Solutions</p><p className="footer-status"><span className="status-dot" /> WROCŁAW · {new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Warsaw" })}</p></footer>
+      <footer><a href="#top" className="footer-mark focus-ring" aria-label="Jakub Aniszewski, back to top">JA<span>/DEV</span></a><p>© {currentYear} Jakub Aniszewski IT Solutions</p><p className="footer-status"><span className="status-dot" /> WROCŁAW · {new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Warsaw" })}</p></footer>
     </div>
   );
 }
