@@ -24,7 +24,7 @@ const credentials = [
   { issuer: "AI_devs", name: "AI Devs 2", date: "NOV 2023", href: "https://credsverse.com/credentials/eeeeb928-1e2f-49d4-8164-3af619f58036" },
 ];
 
-const engineeringToolkit = ["Python", "TypeScript", "React", "FastAPI", "Django", "AI agents", "Agentic workflows", "Context engineering", "Evaluations", "Automation"];
+const engineeringToolkit = ["Python", "TypeScript", "React", "FastAPI", "Django", "AI agents", "Agentic workflows", "Context engineering", "Automation"];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="section-label"><span aria-hidden="true">+</span> {children}</p>;
@@ -101,7 +101,6 @@ function App() {
             </div>
           </div>
           <div className="portrait-stage hero-enter">
-            <div className="portrait-index">JAKUB / CURRENT</div>
             <div className="portrait-frame"><img src={Avatar} alt="Jakub Aniszewski" /><div className="portrait-scan" aria-hidden="true" /></div>
             <div className="portrait-caption"><span>{experienceYears}+ YEARS ENGINEERING SOFTWARE</span><span>CODE / AI</span></div>
           </div>

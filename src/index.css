@@ -47,7 +47,6 @@ button, a { font: inherit; } a { color: inherit; text-decoration: none; }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: 0 1.25rem; border: 1px solid var(--line); font: 700 .72rem "JetBrains Mono", monospace; text-transform: uppercase; transition: transform .2s var(--ease), background .2s, color .2s; }
 .button:hover { transform: translateY(-2px); }.button-primary { color: white; background: var(--signal); border-color: var(--signal); }.button-primary:hover { background: #ff574b; }.button-ghost:hover { color: var(--ink); background: var(--paper); }
 .portrait-stage { justify-self: end; width: min(100%, 470px); transform: rotate(1.5deg); }
-.portrait-index { position: absolute; z-index: 4; top: -29px; left: 0; color: var(--violet-light); font: 600 .7rem "JetBrains Mono", monospace; letter-spacing: .08em; }
 .portrait-frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid #46464f; background: var(--violet); box-shadow: 19px 19px 0 var(--violet); }
 .portrait-frame::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.25) .7px, transparent .8px); background-size: 4px 4px; mix-blend-mode: overlay; }
 .portrait-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.18); mix-blend-mode: luminosity; }
